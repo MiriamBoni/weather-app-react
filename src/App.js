@@ -34,17 +34,29 @@ function App() {
         <input value={location} onChange={event=>setLocation(event.target.value)}
         placeholder="Enter city" onKeyDown={searchLocation}></input>
       </div>
-        <div className="top">
-          <div className="location">
-              <p>{data.name}</p>
+      <div className="tempContainer">
+          <div className="top">
+            <div className="location">
+                <p>{data.name}</p>
+            </div>
+            <div className="temp">
+            {data.main ? <h1>{data.main.temp}ºC</h1> : null}
+            </div>
+            <div className="desc">
+            {/* {data.weather ? <p>{data.weather[0].main}</p> : null} */}
+            {data.weather ? <p>{data.weather[0].description}</p> : null}
+            {/* <img src={data.weather.icon}></img> */}
+            </div>
           </div>
-          <div className="temp">
-           {data.main ? <h1>{data.main.temp}ºC</h1> : null}
-          </div>
-          <div className="desc">
-          {/* {data.weather ? <p>{data.weather[0].main}</p> : null} */}
-          {data.weather ? <p>{data.weather[0].description}</p> : null}
-          {/* <img src={data.weather.icon}></img> */}
+          <div className="topRight">
+            <div className="max">
+              <p>Max</p>
+            {data.main ? <h2>{data.main.temp_max}ºC</h2> : null}
+            </div>
+            <div className="min">
+            <p>Min</p>
+            {data.main ? <h2>{data.main.temp_min}ºC</h2> : null}
+            </div>
           </div>
         </div>
         <div className="bottom">
